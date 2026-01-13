@@ -1,0 +1,30 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-top: 64px;
+}
+
+.section {
+  padding: var(--space-12) 0;
+}
+
+.section:nth-child(even) {
+  background: var(--bg-elevated);
+}
+
+.footer {
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  padding: var(--space-6) 0;
+}
+
+.footer-text {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+}

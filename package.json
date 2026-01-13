@@ -1,0 +1,22 @@
+{
+  "name": "fitness-website",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A fitness tracking website to help users track, improve and stay consistent with their health and workouts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["fitness", "workout", "tracker", "health"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
+    "vite": "^7.3.1"
+  }
+}
