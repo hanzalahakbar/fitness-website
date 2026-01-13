@@ -6,15 +6,8 @@
 
 .main {
   flex: 1;
-  padding-top: 64px;
-}
-
-.section {
-  padding: var(--space-12) 0;
-}
-
-.section:nth-child(even) {
-  background: var(--bg-elevated);
+  padding-top: calc(64px + var(--space-8));
+  padding-bottom: var(--space-12);
 }
 
 .footer {

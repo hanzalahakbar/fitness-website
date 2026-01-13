@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/Header'
 import Dashboard from './components/Dashboard'
 import Workout from './components/Workout'
@@ -8,32 +8,19 @@ import Profile from './components/Profile'
 import './App.css'
 
 function App() {
-  const [activeSection, setActiveSection] = useState('dashboard')
-
   return (
     <div className="app">
-      <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+      <Header />
 
       <main className="main">
-        <section id="dashboard" className="section">
-          <Dashboard />
-        </section>
-
-        <section id="workout" className="section">
-          <Workout />
-        </section>
-
-        <section id="progress" className="section">
-          <Progress />
-        </section>
-
-        <section id="goals" className="section">
-          <Goals />
-        </section>
-
-        <section id="profile" className="section">
-          <Profile />
-        </section>
+        <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/workout" element={<Workout />} />
+          <Route path="/progress" element={<Progress />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
       </main>
 
       <footer className="footer">

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 import {
   LogoIcon,
@@ -15,46 +16,39 @@ import {
 import './Header.css'
 
 const navItems = [
-  { id: 'dashboard', label: 'Dashboard', Icon: HomeIcon },
-  { id: 'workout', label: 'Workout', Icon: DumbbellIcon },
-  { id: 'progress', label: 'Progress', Icon: BarChartIcon },
-  { id: 'goals', label: 'Goals', Icon: TargetIcon },
-  { id: 'profile', label: 'Profile', Icon: UserIcon },
+  { path: '/dashboard', label: 'Dashboard', Icon: HomeIcon },
+  { path: '/workout', label: 'Workout', Icon: DumbbellIcon },
+  { path: '/progress', label: 'Progress', Icon: BarChartIcon },
+  { path: '/goals', label: 'Goals', Icon: TargetIcon },
+  { path: '/profile', label: 'Profile', Icon: UserIcon },
 ]
 
-function Header({ activeSection, setActiveSection }) {
+function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
 
-  const handleNavClick = (id) => {
-    setActiveSection(id)
-    setMobileMenuOpen(false)
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
+  const closeMobileMenu = () => setMobileMenuOpen(false)
 
   return (
     <header className="header">
       <div className="container header-container">
-        <a href="#dashboard" className="logo" onClick={() => handleNavClick('dashboard')}>
+        <NavLink to="/dashboard" className="logo" onClick={closeMobileMenu}>
           <LogoIcon size={28} className="logo-icon" />
           <span className="logo-text">FitTrack</span>
-        </a>
+        </NavLink>
 
         <nav className={`nav ${mobileMenuOpen ? 'nav-open' : ''}`}>
           <ul className="nav-list">
-            {navItems.map(({ id, label, Icon }) => (
-              <li key={id}>
-                <a
-                  href={`#${id}`}
-                  className={`nav-link ${activeSection === id ? 'active' : ''}`}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    handleNavClick(id)
-                  }}
+            {navItems.map(({ path, label, Icon }) => (
+              <li key={path}>
+                <NavLink
+                  to={path}
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                  onClick={closeMobileMenu}
                 >
                   <Icon size={18} className="nav-icon" />
                   <span className="nav-label">{label}</span>
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>
